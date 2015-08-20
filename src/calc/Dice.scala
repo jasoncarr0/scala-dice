@@ -10,7 +10,7 @@ package calc
 
 object Dice {
   def apply(n: Int): PrExp[Int] = {
-    new PrSel[Int]((p) => PrVal(1 + (p * n) toInt))
+    new PrEnum[Int](1 until n + 1)
   }
   
   def parseString(s: String):Option[PrExp[Int]] = {
