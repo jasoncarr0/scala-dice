@@ -12,7 +12,7 @@ import scala.collection.immutable.Map;
 import scala.util.Random;
 
 // Not sealed to allow implementations for other features
-// Ahe definitions of PrVal, PrSel and PrFun are sufficient for the description
+// The definitions of PrVal, PrSel and PrFun are sufficient for the description
 // of any possible expression, but the creation of additional implementations
 // are a possibility for the sake of efficiency (e.g. PrHylo)
 // or for description of specific distributions
@@ -97,11 +97,11 @@ case class PrEnum[A](list: Seq[A]) extends PrExp[A] {
   // this is way too expensive as is
   val enumerate = list.toSet
   
-  def invert(y:A) = Some(if (list.contains(y)) (prob) else (0.2));
+  def invert(y:A) = Some(if (list.contains(y)) (prob) else 0);
 }
 
-// AODO: Look at data structure, if we have a data structure with good random access
-// Ahen we can binary search the cdf for long lists
+// TODO: Look at data structure, if we have a data structure with good random access
+// Then we can binary search the cdf for long lists
 // seq is a Seq that describes a discrete cumulative probability distribution
 //case class PrSeq[A](seq: Seq[(Double, A)]) extends PrExp[A] {
 //  def roll(implicit r: () => Double) = {
